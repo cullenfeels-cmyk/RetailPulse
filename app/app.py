@@ -1,14 +1,14 @@
 import streamlit as st
 
-st.set_page_config(page_title="RetailPulse AI", layout="wide")
+st.set_page_config(page_title="RetailPulse AI", layout="wide", initial_sidebar_state="expanded")
 
-# Define your pages explicitly so the sidebar populates correctly
+# Explicitly define pages with their correct relative paths inside the apps folder
 pages = {
-    "Home": [
-        st.Page("pages/1_Home.py", title="Home"),
-    ],
-    "Analytics": [
+    "Overview": [
+        st.Page("pages/1_Home.py", title="Home", default=True),
         st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
+    ],
+    "Analytics Hub": [
         st.Page("pages/3_Sales_Analytics.py", title="Sales Analytics"),
         st.Page("pages/4_Product_Analytics.py", title="Product Analytics"),
         st.Page("pages/5_customer_analysis.py", title="Customer Analysis"),
