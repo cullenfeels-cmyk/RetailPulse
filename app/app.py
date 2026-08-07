@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Flat navigation list containing all your pages directly
+# Explicitly define all your pages so Streamlit's sidebar navigation renders them and handles clicks
 pages = [
     st.Page("pages/1_Home.py", title="Home", default=True),
     st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
