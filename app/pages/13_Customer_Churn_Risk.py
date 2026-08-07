@@ -7,6 +7,12 @@ from utils import load_data
 st.set_page_config(page_title="Customer Churn Risk", page_icon="⚠️", layout="wide")
 load_css("light")
 
+# ==========================================================
+# BACK TO HOME NAVIGATION BUTTON
+# ==========================================================
+if st.button("⬅️ Back to Home"):
+    st.switch_page("pages/1_Home.py")
+
 st.markdown("""
 <div class="dashboard-title">⚠️ RetailPulse AI</div>
 <div class="dashboard-subtitle">Customer Churn Prediction & Risk Analysis</div>
