@@ -196,7 +196,7 @@ with col_c:
         ">
             <span style="
                 color: #FFFFFF !important;
-                font-weight: 800 !important;
+                font-weight: 900 !important;
                 font-size: 24px !important;
                 letter-spacing: 0.5px;
             ">
