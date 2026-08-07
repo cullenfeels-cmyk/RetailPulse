@@ -1,0 +1,35 @@
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+[data-testid="collapsedControl"] {
+    display: none;
+}
+
+.block-container {
+    padding-top: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+div[data-testid="metric-container"] {
+    background-color: #111827;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+}
+body {
+    color: white;
+}
+section[data-testid="stSidebar"] {
+    background-color: #0f172a;
+    color: white;
+}
