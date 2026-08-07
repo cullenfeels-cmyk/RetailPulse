@@ -149,7 +149,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================================
-# CENTERED CREATOR CARD (PURE WHITE TEXT BANNER FIX)
+# CENTERED CREATOR CARD
 # ==========================================================
 
 col_l, col_c, col_r = st.columns([1, 2.2, 1])
