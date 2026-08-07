@@ -195,7 +195,7 @@ with col_c:
             box-shadow: 0 4px 15px rgba(15, 23, 42, 0.25);
         ">
             <span style="
-                color: #FFFDD0 !important;
+                color: #FFFFFF !important;
                 font-weight: 800 !important;
                 font-size: 24px !important;
                 letter-spacing: 0.5px;
