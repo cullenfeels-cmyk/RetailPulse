@@ -14,20 +14,35 @@ st.markdown("""
 
 df = load_data()
 
-# Load churn predictions if available, else simulate/calculate based on recency
 st.markdown("## 🎯 Customer Churn Risk Overview")
 
-if "CustomerID" in df.columns:
-    # Calculate Recency to determine churn risk proxy
-    max_date = df["InvoiceDate"].max()
-    churn_df = df.groupby("CustomerID").agg(
-        Last_Purchase=("InvoiceDate", "max"),
-        Total_Spent=("TotalPrice", "sum"),
-        Order_Count=("Invoice", "nunique")
-    ).reset_index()
+# Dynamically find the correct column names from the dataset
+customer_col = next((col for col in df.columns if "customer" in col.lower() or "client" in col.lower() or "id" in col.lower()), None)
+date_col = next((col for col in df.columns if "date" in col.lower()), None)
+price_col = next((col for col in df.columns if "price" in col.lower() or "total" in col.lower() or "amount" in col.lower()), None)
+invoice_col = next((col for col in df.columns if "invoice" in col.lower() or "order" in col.lower() or "transaction" in col.lower()), customer_col)
+
+if customer_col and date_col:
+    # Ensure date column is datetime
+    df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+    max_date = df[date_col].max()
+    
+    # Aggregate data per customer
+    agg_dict = {
+        date_col: ("max", "max"),
+    }
+    if price_col:
+        agg_dict["Total_Spent"] = (price_col, "sum")
+    if invoice_col:
+        agg_dict["Order_Count"] = (invoice_col, "nunique")
+
+    churn_df = df.groupby(customer_col).agg(**agg_dict).reset_index()
+    churn_df.rename(columns={date_col: "Last_Purchase"}, inplace=True)
     
     churn_df["Days_Inactive"] = (max_date - churn_df["Last_Purchase"]).dt.days
-    churn_df["Churn_Risk"] = churn_df["Days_Inactive"].apply(lambda x: "High Risk" if x > 90 else ("Medium Risk" if x > 60 else "Low Risk"))
+    churn_df["Churn_Risk"] = churn_df["Days_Inactive"].apply(
+        lambda x: "High Risk" if x > 90 else ("Medium Risk" if x > 60 else "Low Risk")
+    )
 
     risk_counts = churn_df["Churn_Risk"].value_counts().reset_index()
     risk_counts.columns = ["Risk Level", "Count"]
@@ -41,7 +56,8 @@ if "CustomerID" in df.columns:
         st.plotly_chart(fig_bar, use_container_width=True)
         
     st.markdown("### 📋 High-Risk Customer Accounts")
-    high_risk_table = churn_df[churn_df["Churn_Risk"] == "High Risk"].sort_values(by="Total_Spent", ascending=False).head(10)
+    sort_col = "Total_Spent" if "Total_Spent" in churn_df.columns else "Days_Inactive"
+    high_risk_table = churn_df[churn_df["Churn_Risk"] == "High Risk"].sort_values(by=sort_col, ascending=False).head(10)
     st.dataframe(high_risk_table, use_container_width=True)
 else:
-    st.warning("Customer ID data not found for churn analytics.")
+    st.error(f"Could not automatically detect required columns. Found columns: {list(df.columns)}")
