@@ -1,6 +1,8 @@
 import streamlit as st
 import urllib.parse
 from styles import load_css
+if st.button("⬅️ Back to Home"):
+    st.switch_page("pages/1_Home.py")
 
 # ==========================================================
 # PAGE CONFIGURATION
