@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
 from styles import load_css
 from utils import load_data
 
@@ -17,7 +16,6 @@ st.set_page_config(
 )
 
 load_css("light")
-
 
 df = load_data()
 
@@ -89,7 +87,7 @@ if selected_products:
     ]
 
 # ==========================================================
-# SALES KPIs
+# SALES KPIS
 # ==========================================================
 
 total_sales = filtered_df["TotalPrice"].sum()
@@ -109,6 +107,7 @@ total_qty = (
     filtered_df["Quantity"]
     .sum()
 )
+
 # ==========================================================
 # KPI CARDS
 # ==========================================================
@@ -124,7 +123,6 @@ def kpi_card(title, value, icon, c1, c2):
         box-shadow:0 4px 12px rgba(0,0,0,.15);
     ">
         <div style="font-size:18px;">{icon} {title}</div>
-
         <div style="
             font-size:32px;
             font-weight:bold;
@@ -260,6 +258,7 @@ st.plotly_chart(
     fig,
     use_container_width=True
 )
+
 # ==========================================================
 # SALES BY COUNTRY
 # ==========================================================
@@ -329,7 +328,6 @@ st.plotly_chart(fig, use_container_width=True)
 left, right = st.columns(2)
 
 with left:
-
     st.markdown("### 📦 Product Revenue Share")
 
     fig = px.pie(
@@ -345,7 +343,6 @@ with left:
     st.plotly_chart(fig, use_container_width=True)
 
 with right:
-
     st.markdown("### 🌍 Country Revenue Share")
 
     fig = px.pie(
@@ -374,9 +371,9 @@ season_df["Month"] = (
 )
 
 month_order = [
-    "January","February","March","April",
-    "May","June","July","August",
-    "September","October","November","December"
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
 ]
 
 season_df["Month"] = pd.Categorical(
@@ -407,6 +404,7 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 # ==========================================================
 # SALES HEALTH SCORE
 # ==========================================================
@@ -415,7 +413,6 @@ st.markdown("## ❤️ Sales Health Score")
 
 health_score = 0
 
-# Revenue Score
 if total_sales > 1000000:
     health_score += 30
 elif total_sales > 500000:
@@ -423,7 +420,6 @@ elif total_sales > 500000:
 else:
     health_score += 15
 
-# Orders Score
 if total_orders > 5000:
     health_score += 25
 elif total_orders > 2000:
@@ -431,7 +427,6 @@ elif total_orders > 2000:
 else:
     health_score += 10
 
-# Average Order Score
 if avg_order > 250:
     health_score += 25
 elif avg_order > 150:
@@ -439,7 +434,6 @@ elif avg_order > 150:
 else:
     health_score += 10
 
-# Quantity Score
 if total_qty > 50000:
     health_score += 20
 elif total_qty > 20000:
@@ -534,7 +528,6 @@ else:
 insight1, insight2 = st.columns(2)
 
 with insight1:
-
     st.info(
         f"""
 **Top Revenue Product**
@@ -546,7 +539,6 @@ This product contributes the highest revenue and should remain a priority for in
     )
 
 with insight2:
-
     st.success(
         f"""
 **Highest Revenue Market**
