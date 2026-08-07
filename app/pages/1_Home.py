@@ -147,73 +147,134 @@ with m4:
 st.markdown("---")
 
 # ==========================================================
-# ANALYTICS MODULE DIRECTORY (BULLETPROOF ACTION BUTTONS)
+# ANALYTICS MODULE DIRECTORY (ALL 15 MODULES)
 # ==========================================================
 
 st.markdown("### 🧭 Analytics Module Directory")
 st.markdown("Select a functional module below to navigate directly:")
 
+# ROW 1
 r1_c1, r1_c2, r1_c3, r1_c4 = st.columns(4)
 
 with r1_c1:
     with st.container(border=True):
         st.markdown("**📊 Executive Dashboard**")
         st.caption("C-Suite KPIs, performance banners, YoY revenue trends, and growth indicators.")
-        if st.button("Launch Executive Hub ➔", key="btn_exec"):
-            navigate_to_module(["2_Executive_Dashboard.py", "2_executive_dashboard.py", "1_Executive_Dashboard.py"])
+        if st.button("Launch Hub ➔", key="btn_exec"):
+            navigate_to_module(["2_Executive_Dashboard.py", "2_executive_dashboard.py"])
 
 with r1_c2:
     with st.container(border=True):
         st.markdown("**💰 Sales Analytics**")
         st.caption("Revenue trends, monthly growth %, seasonal patterns, and order size distributions.")
-        if st.button("Launch Sales Hub ➔", key="btn_sales"):
+        if st.button("Launch Hub ➔", key="btn_sales"):
             navigate_to_module(["3_Sales_Analytics.py", "3_sales_analytics.py"])
 
 with r1_c3:
     with st.container(border=True):
         st.markdown("**📦 Product Analytics**")
         st.caption("Pareto 80/20 analysis, product contribution charts, and price vs volume matrix.")
-        if st.button("Launch Product Hub ➔", key="btn_product"):
+        if st.button("Launch Hub ➔", key="btn_product"):
             navigate_to_module(["4_Product_Analytics.py", "4_product_analytics.py"])
 
 with r1_c4:
     with st.container(border=True):
         st.markdown("**👥 Customer Analysis**")
         st.caption("Customer Lifetime Value (CLV), RFM segmentation, and retention dynamics.")
-        if st.button("Launch Customer Hub ➔", key="btn_cust"):
+        if st.button("Launch Hub ➔", key="btn_cust"):
             navigate_to_module(["5_customer_analysis.py", "5_Customer_Analysis.py"])
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+# ROW 2
 r2_c1, r2_c2, r2_c3, r2_c4 = st.columns(4)
 
 with r2_c1:
     with st.container(border=True):
         st.markdown("**🌍 Country Insights**")
         st.caption("Geographic choropleth maps, global revenue contribution, and efficiency.")
-        if st.button("Launch Country Hub ➔", key="btn_country"):
+        if st.button("Launch Hub ➔", key="btn_country"):
             navigate_to_module(["6_Country_Insights.py", "6_country_insights.py"])
 
 with r2_c2:
     with st.container(border=True):
         st.markdown("**⏰ Time Analysis**")
         st.caption("Hour of day x day of week heatmaps, intra-day traffic peaks, and resampled trendlines.")
-        if st.button("Launch Time Hub ➔", key="btn_time"):
+        if st.button("Launch Hub ➔", key="btn_time"):
             navigate_to_module(["7_Time_Analysis.py", "7_time_analysis.py"])
 
 with r2_c3:
     with st.container(border=True):
         st.markdown("**💹 Profit Analysis**")
         st.caption("Gross profit margin waterfalls, COGS ratio simulation, and top margin drivers.")
-        if st.button("Launch Profit Hub ➔", key="btn_profit"):
+        if st.button("Launch Hub ➔", key="btn_profit"):
             navigate_to_module(["8_Profit_Analysis.py", "8_profit_analysis.py"])
 
 with r2_c4:
     with st.container(border=True):
         st.markdown("**⚠️ Inventory Risk**")
         st.caption("Stockout risk tables, Days of Inventory Remaining (DIR), and capital allocation.")
-        if st.button("Launch Inventory Hub ➔", key="btn_inv"):
+        if st.button("Launch Hub ➔", key="btn_inv"):
             navigate_to_module(["9_Inventory_Risk.py", "9_inventory_risk.py"])
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ROW 3
+r3_c1, r3_c2, r3_c3, r3_c4 = st.columns(4)
+
+with r3_c1:
+    with st.container(border=True):
+        st.markdown("**💡 Business Insights**")
+        st.caption("Strategic summaries, cross-selling potential, and performance anomalies.")
+        if st.button("Launch Hub ➔", key="btn_bi"):
+            navigate_to_module(["10_Business_Insights.py", "10_business_insights.py"])
+
+with r3_c2:
+    with st.container(border=True):
+        st.markdown("**🔬 Advanced Analytics**")
+        st.caption("Advanced statistical models, correlation matrices, and predictive drivers.")
+        if st.button("Launch Hub ➔", key="btn_adv"):
+            navigate_to_module(["11_Advanced_Analytics.py", "11_advanced_analytics.py"])
+
+with r3_c3:
+    with st.container(border=True):
+        st.markdown("**📋 KPI Summary**")
+        st.caption("Aggregated metric summaries, variance performance, and ledger reviews.")
+        if st.button("Launch Hub ➔", key="btn_kpi"):
+            navigate_to_module(["12_KPI_Summary.py", "12_kpi_summary.py"])
+
+with r3_c4:
+    with st.container(border=True):
+        st.markdown("**⚠️ Churn Risk**")
+        st.caption("Customer churn likelihood metrics, segmentation, and high-risk accounts.")
+        if st.button("Launch Hub ➔", key="btn_churn"):
+            navigate_to_module(["13_Customer_Churn_Risk.py", "13_customer_churn_risk.py"])
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ROW 4
+r4_c1, r4_c2, r4_c3 = st.columns(3)
+
+with r4_c1:
+    with st.container(border=True):
+        st.markdown("**📈 Demand Explorer**")
+        st.caption("Historical product demand tracking, units sold trends, and volume metrics.")
+        if st.button("Launch Hub ➔", key="btn_demand"):
+            navigate_to_module(["14_Demand_Explorer.py", "14_demand_explorer.py"])
+
+with r4_c2:
+    with st.container(border=True):
+        st.markdown("**✨ Thank You**")
+        st.caption("Project acknowledgments, contact info, and closing platform overview.")
+        if st.button("Launch Hub ➔", key="btn_thx"):
+            navigate_to_module(["15_Thank_You.py", "15_thank_you.py"])
+
+with r4_c3:
+    with st.container(border=True):
+        st.markdown("**🏠 Home Dashboard**")
+        st.caption("Return to the main overview control center.")
+        if st.button("Launch Hub ➔", key="btn_home"):
+            navigate_to_module(["1_Home.py", "1_home.py"])
 
 st.markdown("---")
 
@@ -228,17 +289,17 @@ col_ins1, col_ins2 = st.columns(2)
 with col_ins1:
     st.info("""
     **💡 Market & Geographic Dominance**
-    * **United Kingdom Primary Engine:** The UK generates over **85.8%** of total commercial revenue ($8.81M)[cite: 2].
-    * **European Growth Hubs:** Secondary markets led by EIRE ($380.9K), Netherlands ($268.8K), Germany ($202.0K), and France ($147.1K)[cite: 2].
-    * **Global Footprint:** Active transactions across **40 unique international markets**[cite: 2].
+    * **United Kingdom Primary Engine:** The UK generates over **85.8%** of total commercial revenue ($8.81M).
+    * **European Growth Hubs:** Secondary markets led by EIRE ($380.9K), Netherlands ($268.8K), Germany ($202.0K), and France ($147.1K).
+    * **Global Footprint:** Active transactions across **40 unique international markets**.
     """)
 
 with col_ins2:
     st.success("""
     **📈 Commercial & Temporal Trends**
-    * **Q4 Seasonal Peak:** Sales surge dramatically in November ($1.46M monthly peak) due to holiday demand[cite: 2].
-    * **Product Concentration:** Revenue is highly concentrated in top revenue drivers such as *Manual*, *Regency Cakestand 3 Tier*, and *White Hanging Heart T-Light Holder*[cite: 2].
-    * **Average Transaction Value:** Steady Average Order Value (AOV) benchmarked at **$490.28** per transaction[cite: 2].
+    * **Q4 Seasonal Peak:** Sales surge dramatically in November ($1.46M monthly peak) due to holiday demand.
+    * **Product Concentration:** Revenue is highly concentrated in top revenue drivers such as *Manual*, *Regency Cakestand 3 Tier*, and *White Hanging Heart T-Light Holder*.
+    * **Average Transaction Value:** Steady Average Order Value (AOV) benchmarked at **$490.28** per transaction.
     """)
 
 # ==========================================================
