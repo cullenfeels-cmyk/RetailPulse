@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Explicitly define all your pages so Streamlit's sidebar navigation renders them and handles clicks
+# Define all 13 pages explicitly for the sidebar router
 pages = [
     st.Page("pages/1_Home.py", title="Home", default=True),
     st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
@@ -24,5 +24,5 @@ pages = [
     st.Page("pages/13_Thank_You.py", title="Thank You"),
 ]
 
-pg = st.navigation(pages)
+pg = st.navigation(pages, position="sidebar")
 pg.run()
