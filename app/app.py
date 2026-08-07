@@ -20,8 +20,10 @@ pages = [
     st.Page("pages/10_Business_Insights.py", title="Business Insights"),
     st.Page("pages/11_Advanced_Analytics.py", title="Advanced Analytics"),
     st.Page("pages/12_KPI_Summary.py", title="KPI Summary"),
-    st.Page("pages/13_Thank_You.py", title="Thank You"),
+    st.Page("pages/13_Customer_Churn_Risk.py", title="Customer Churn Risk"),
+    st.Page("pages/14_Demand_Explorer.py", title="Demand Explorer"),
+    st.Page("pages/15_Thank_You.py", title="Thank You"),
 ]
 
-pg = st.navigation(pages)
+pg = st.navigation(pages, position="sidebar")
 pg.run()
