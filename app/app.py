@@ -8,14 +8,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Verify if data path exists so metrics don't display blank fields
-data_path = "data/retail_data.csv" # Update this to match your actual dataset filename if different
-data_exists = os.path.exists(data_path)
+# Verify that the actual dataset file exists in the data directory
+data_path = "data/cleaned_data.csv"
+if not os.path.exists(data_path):
+    st.sidebar.error(f"⚠️ Missing file: {data_path}")
 
-if not data_exists:
-    st.sidebar.warning("⚠️ Data file path needs verification. Check 'data/' folder.")
-
-# Define all 13 pages explicitly for the sidebar router
+# Explicit navigation list for all your 13 pages
 pages = [
     st.Page("pages/1_Home.py", title="Home", default=True),
     st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
