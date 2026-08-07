@@ -16,7 +16,8 @@ st.set_page_config(
 )
 
 load_css("light")
-
+if st.button("⬅️ Back to Home"):
+    st.switch_page("pages/1_Home.py")
 df = load_data()
 
 # ==========================================================

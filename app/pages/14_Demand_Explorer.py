@@ -7,6 +7,9 @@ from utils import load_data
 st.set_page_config(page_title="Demand Explorer", page_icon="📈", layout="wide")
 load_css("light")
 
+if st.button("⬅️ Back to Home"):
+    st.switch_page("pages/1_Home.py")
+
 st.markdown("""
 <div class="dashboard-title">📈 RetailPulse AI</div>
 <div class="dashboard-subtitle">Product Demand & Forecasting Explorer</div>
