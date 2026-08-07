@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 st.set_page_config(
     page_title="RetailPulse AI",
@@ -8,12 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Verify that the actual dataset file exists in the data directory
-data_path = "data/cleaned_data.csv"
-if not os.path.exists(data_path):
-    st.sidebar.error(f"⚠️ Missing file: {data_path}")
-
-# Explicit navigation list for all your 13 pages
+# Use st.navigation with explicit pages list to force the sidebar menu to render
 pages = [
     st.Page("pages/1_Home.py", title="Home", default=True),
     st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
@@ -30,5 +24,5 @@ pages = [
     st.Page("pages/13_Thank_You.py", title="Thank You"),
 ]
 
-pg = st.navigation(pages, position="sidebar")
+pg = st.navigation(pages)
 pg.run()
