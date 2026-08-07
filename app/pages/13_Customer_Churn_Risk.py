@@ -16,28 +16,34 @@ df = load_data()
 
 st.markdown("## 🎯 Customer Churn Risk Overview")
 
-# Dynamically find the correct column names from the dataset
-customer_col = next((col for col in df.columns if "customer" in col.lower() or "client" in col.lower() or "id" in col.lower()), None)
-date_col = next((col for col in df.columns if "date" in col.lower()), None)
-price_col = next((col for col in df.columns if "price" in col.lower() or "total" in col.lower() or "amount" in col.lower()), None)
-invoice_col = next((col for col in df.columns if "invoice" in col.lower() or "order" in col.lower() or "transaction" in col.lower()), customer_col)
+# Dynamically search for columns safely
+cols = list(df.columns)
+customer_col = next((c for c in cols if "customer" in c.lower() or "client" in c.lower() or "id" in c.lower()), None)
+date_col = next((c for c in cols if "date" in c.lower()), None)
+price_col = next((c for c in cols if "price" in c.lower() or "total" in c.lower() or "amount" in c.lower()), None)
+invoice_col = next((c for c in cols if "invoice" in c.lower() or "order" in c.lower()), None)
 
 if customer_col and date_col:
-    # Ensure date column is datetime
     df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
     max_date = df[date_col].max()
     
-    # Aggregate data per customer
-    agg_dict = {
-        date_col: ("max", "max"),
-    }
-    if price_col:
-        agg_dict["Total_Spent"] = (price_col, "sum")
-    if invoice_col:
-        agg_dict["Order_Count"] = (invoice_col, "nunique")
+    # Build safe dynamic aggregation dictionary
+    agg_rules = {date_col: "max"}
+    if price_col and price_col in df.columns:
+        agg_rules[price_col] = "sum"
+    if invoice_col and invoice_col in df.columns:
+        agg_rules[invoice_col] = "nunique"
 
-    churn_df = df.groupby(customer_col).agg(**agg_dict).reset_index()
-    churn_df.rename(columns={date_col: "Last_Purchase"}, inplace=True)
+    churn_df = df.groupby(customer_col).agg(agg_rules).reset_index()
+    
+    # Rename columns safely based on what was aggregated
+    rename_mapping = {date_col: "Last_Purchase"}
+    if price_col in agg_rules:
+        rename_mapping[price_col] = "Total_Spent"
+    if invoice_col in agg_rules:
+        rename_mapping[invoice_col] = "Order_Count"
+    
+    churn_df.rename(columns=rename_mapping, inplace=True)
     
     churn_df["Days_Inactive"] = (max_date - churn_df["Last_Purchase"]).dt.days
     churn_df["Churn_Risk"] = churn_df["Days_Inactive"].apply(
@@ -60,4 +66,4 @@ if customer_col and date_col:
     high_risk_table = churn_df[churn_df["Churn_Risk"] == "High Risk"].sort_values(by=sort_col, ascending=False).head(10)
     st.dataframe(high_risk_table, use_container_width=True)
 else:
-    st.error(f"Could not automatically detect required columns. Found columns: {list(df.columns)}")
+    st.error(f"Could not locate Customer ID or Date columns. Available columns: {cols}")
