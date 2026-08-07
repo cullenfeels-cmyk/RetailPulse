@@ -1,12 +1,13 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="RetailPulse AI",
+    page_title="RetailPulse AI Platform",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
+# Define all 15 pages for the native left sidebar navigation
 pages = [
     st.Page("pages/1_Home.py", title="Home", default=True),
     st.Page("pages/2_Executive_Dashboard.py", title="Executive Dashboard"),
