@@ -19,22 +19,22 @@ RetailPulse is an end-to-end AI-powered retail analytics and demand forecasting 
 * **Version Control:** Git & GitHub
 
 ## Dashboard Pages (15-Page Interactive Suite)
-1. Cover Page & Platform Home
-2. Executive Summary Dashboard
-3. Sales & Demand Overview
-4. Forecast Visualization & Trends
-5. Customer Segments Analysis (RFM & K-Means)
-6. Customer Churn Insights & Risk Matrix
-7. Inventory Optimization & Safety Stock
-8. Product Performance Analysis
-9. Country-Wise Revenue Breakdown
-10. Time-Series Seasonality Analysis
-11. Interactive Filters & Advanced Reporting
-12. MLOps Model Registry & Experiment Tracking
-13. Data & Concept Drift Detection Monitor
-14. Actionable Business Insights & Recommendations
-15. KPI Summary & Thank You
-
+1. Home (`1_Home.py`)
+2. Executive Dashboard (`2_Executive_Dashboard.py`)
+3. Sales Analytics (`3_Sales_Analytics.py`)
+4. Product Analytics (`4_Product_Analytics.py`)
+5. Customer Analysis (`5_customer_analysis.py`)
+6. Country Insights (`6_Country_Insights.py`)
+7. Time Analysis (`7_Time_Analysis.py`)
+8. Profit Analysis (`8_Profit_Analysis.py`)
+9. Inventory Risk (`9_Inventory_Risk.py`)
+10. Business Insights (`10_Business_Insights.py`)
+11. Advanced Analytics (`11_Advanced_Analytics.py`)
+12. KPI Summary (`12_KPI_Summary.py`)
+13. Customer Churn Risk (`13_Customer_Churn_Risk.py`)
+14. Demand Explorer (`14_Demand_Explorer.py`)
+15. Thank You (`15_Thank_You.py`)
+    
 ## Key KPIs
 * Total Revenue
 * Total Orders
